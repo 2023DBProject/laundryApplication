@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="0.25"
+        android:src="@drawable/my_image" />
+
+    <Button
+        android:id="@+id/button_sales_management"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="316dp"
+        android:drawableTop="@drawable/my_image_4"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:text="대시보드"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/button_dashboard"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="116dp"
+        android:drawableTop="@drawable/my_image_4"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:text="매출관리"
+        app:layout_constraintEnd_toStartOf="@+id/button_solution"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toEndOf="@+id/button_sales_management"
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/button_solution"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="316dp"
+        android:layout_marginEnd="16dp"
+        android:drawableTop="@drawable/my_image_4"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:text="솔루션"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="191dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
