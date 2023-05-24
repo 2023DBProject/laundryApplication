@@ -6,134 +6,140 @@
     android:layout_height="match_parent"
     tools:context=".DailyActivity">
 
-<!--    페이지 타이틀-->
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/white"
         android:gravity="center"
-        android:text="몇월몇일 매출입력"
-        android:textColor="@color/white"
+        android:text="@string/날짜별매출입력"
+        android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    입력란: 세탁/건조, 운동화, 세탁용품, 음료수/커피/안마의자-->
+    <!-- 세탁/건조 입력-->
     <TextView
         android:id="@+id/clothText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="110dp"
-        android:text="세탁/건조 : "
-        android:textSize="20sp"
+        android:layout_height="45dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/세탁건조"
+        android:textSize="25sp"
         android:textStyle="bold"
+        android:gravity="start"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/EditText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="100dp"
+        android:id="@+id/editCloth"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="35dp"
         android:layout_weight="1"
         android:ems="10"
+        android:hint="@string/매출입력"
         android:inputType="textPersonName"
         android:minHeight="50dp"
-        android:text="매출을 입력해주세요"
         app:layout_constraintStart_toEndOf="@+id/clothText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <!-- 운동화 입력-->
     <TextView
         android:id="@+id/shoeText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:text="운동화 :      "
-        android:textSize="20sp"
+        android:layout_height="45dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/운동화"
+        android:textSize="25sp"
         android:textStyle="bold"
+        android:gravity="start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clothText" />
 
     <EditText
-        android:id="@+id/EditText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:id="@+id/editShoe"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:ems="10"
+        android:hint="@string/매출입력"
         android:inputType="textPersonName"
         android:minHeight="50dp"
-        android:text="매출을 입력해주세요"
         app:layout_constraintStart_toEndOf="@+id/shoeText"
-        app:layout_constraintTop_toBottomOf="@+id/EditText1" />
+        app:layout_constraintTop_toBottomOf="@+id/editCloth" />
 
+    <!-- 세탁 용품 입력-->
     <TextView
         android:id="@+id/thingsText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:text="세탁용품 :  "
-        android:textSize="20sp"
+        android:layout_height="45dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/세탁용품"
+        android:textSize="25sp"
         android:textStyle="bold"
+        android:gravity="start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shoeText" />
 
     <EditText
-        android:id="@+id/EditText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:id="@+id/editThings"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:ems="10"
+        android:hint="@string/매출입력"
         android:inputType="textPersonName"
         android:minHeight="50dp"
-        android:text="매출을 입력해주세요"
         app:layout_constraintStart_toEndOf="@+id/thingsText"
-        app:layout_constraintTop_toBottomOf="@+id/EditText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editShoe" />
 
+    <!-- 기타 입력-->
     <TextView
         android:id="@+id/etcText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:text="보조 시설 :  "
-        android:textSize="20sp"
+        android:layout_height="45dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/기타"
+        android:textSize="25sp"
         android:textStyle="bold"
+        android:gravity="start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thingsText" />
 
     <EditText
-        android:id="@+id/EditText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:id="@+id/editEtc"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:ems="10"
+        android:hint="@string/매출입력"
         android:inputType="textPersonName"
         android:minHeight="50dp"
-        android:text="매출을 입력해주세요"
         app:layout_constraintStart_toEndOf="@+id/etcText"
-        app:layout_constraintTop_toBottomOf="@+id/EditText3" />
+        app:layout_constraintTop_toBottomOf="@+id/editThings" />
 
-<!--    버튼-->
+    <!-- 저장 버튼-->
     <Button
         android:id="@+id/saveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
-        android:text="저장"
+        android:text="@string/저장"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditText4" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editEtc" />
 </androidx.constraintlayout.widget.ConstraintLayout>
