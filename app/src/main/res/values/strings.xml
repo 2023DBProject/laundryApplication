@@ -20,7 +20,7 @@
     <string name="저장">저장</string>
     <string name="매출입력">매출을 입력해주세요</string>
     <string name="월매출">월간 매출 :</string>
-    <string name="월매출지출입력">월간 매출 및 지출 입력</string>
+    <string name="월지출입력">월간 지출 입력</string>
     <string name="보조">보조 시설 :</string>
     <string name="세탁용품">세탁용품 :</string>
     <string name="운동화">운동화 :</string>
@@ -29,7 +29,24 @@
     <string name="hello_user">Hello User</string>
     <string name="show매출">매출을 보여주세요.</string>
     <string name="show지출">지출을 보여주세요.</string>
-    <string name="show순이익">순이익을 보여주세요</string>
+    <string name="show순이익">순이익을 보여주세요.</string>
     <string name="기타">기타 : </string>
-    <string name="goBack">메인화면으로</string>/>
+    <string name="goBack">메인화면으로</string>
+    <string name="고정비용">고정비용 : </string>
+    <string name="고정비용입력">고정비용을 입력해주세요</string>
+    <string name="수도세">수도세 : </string>
+    <string name="수도세입력">수도세를 입력해주세요</string>
+    <string name="전기세">전기세 : </string>
+    <string name="전기세입력">전기세를 입력해주세요</string>
+    <string name="광고비">광고비 : </string>
+    <string name="광고비입력">광고비를 입력해주세요</string>
+    <string name="지출추가">지출 입력</string>
+    <string name="비품지출">비품지출 입력</string>
+    <string name="월비품지출입력">월간 비품 지출 입력</string>
+    <string name="세제">세제 : </string>
+    <string name="비용입력">비용을 입력해주세요</string>
+    <string name="섬유유연제">섬유유연제 : </string>
+    <string name="바운스">바운스 : </string>
+    <string name="세탁비닐">세탁비닐 : </string>
+    <string name="수리비용">수리비 : </string>/>
 </resources>

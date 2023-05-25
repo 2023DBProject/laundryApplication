@@ -13,76 +13,268 @@
         android:layout_height="wrap_content"
         android:background="@color/black"
         android:gravity="center"
-        android:text="@string/월매출지출입력"
+        android:text="@string/월지출입력"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    매출-->
+
+
+    <!--    수도세-->
     <TextView
-        android:id="@+id/earnText"
+        android:id="@+id/watertaxText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="110dp"
-        android:text="@string/월매출"
+        android:layout_marginTop="70dp"
+        android:text="@string/수도세"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <EditText
-        android:id="@+id/EditText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="50dp"
-        app:layout_constraintStart_toEndOf="@+id/earnText"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/매출입력" />
-
-    <!--    지출-->
-    <TextView
-        android:id="@+id/paidText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/월지출"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/earnText" />
-
     <EditText
         android:id="@+id/EditText2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="70dp"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="50dp"
-        android:hint="@string/지출입력"
-        app:layout_constraintStart_toEndOf="@+id/paidText"
-        app:layout_constraintTop_toBottomOf="@+id/EditText1" />
+        android:hint="@string/비용입력"
+        app:layout_constraintStart_toEndOf="@+id/watertaxText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    전기세-->
+    <TextView
+        android:id="@+id/electricityfeeText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/전기세"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/watertaxText" />
+
+    <EditText
+        android:id="@+id/EditText3"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:hint="@string/비용입력"
+        app:layout_constraintStart_toEndOf="@+id/electricityfeeText"
+        app:layout_constraintTop_toBottomOf="@+id/EditText2" />
+
+    <!--    광고비-->
+    <TextView
+        android:id="@+id/adText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/광고비"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/electricityfeeText" />
+
+    <EditText
+        android:id="@+id/EditText4"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:hint="@string/비용입력"
+        app:layout_constraintStart_toEndOf="@+id/adText"
+        app:layout_constraintTop_toBottomOf="@+id/EditText3" />
+
+    <!--    세제-->
+    <TextView
+        android:id="@+id/detergentText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/세제"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adText" />
+
+
+    <EditText
+        android:id="@+id/EditText5"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        app:layout_constraintStart_toEndOf="@+id/detergentText"
+        app:layout_constraintTop_toBottomOf="@+id/EditText4"
+        android:hint="@string/비용입력" />
+
+    <!--    섬유유연제-->
+    <TextView
+        android:id="@+id/fabricSoftenerText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/섬유유연제"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detergentText" />
+
+    <EditText
+        android:id="@+id/EditText6"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:hint="@string/비용입력"
+        app:layout_constraintStart_toEndOf="@+id/fabricSoftenerText"
+        app:layout_constraintTop_toBottomOf="@+id/EditText5" />
+
+    <!--    바운스-->
+    <TextView
+        android:id="@+id/bounceText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/바운스"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fabricSoftenerText" />
+
+    <EditText
+        android:id="@+id/EditText7"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:hint="@string/비용입력"
+        app:layout_constraintStart_toEndOf="@+id/bounceText"
+        app:layout_constraintTop_toBottomOf="@+id/EditText6" />
+
+    <!--    세탁비닐-->
+    <TextView
+        android:id="@+id/vinylText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/세탁비닐"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bounceText" />
+
+    <EditText
+        android:id="@+id/EditText8"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:hint="@string/비용입력"
+        app:layout_constraintStart_toEndOf="@+id/vinylText"
+        app:layout_constraintTop_toBottomOf="@+id/EditText7" />
+
+    <!--    수리비용-->
+    <TextView
+        android:id="@+id/repairText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/수리비용"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vinylText" />
+
+    <EditText
+        android:id="@+id/EditText9"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        android:hint="@string/비용입력"
+        app:layout_constraintStart_toEndOf="@+id/repairText"
+        app:layout_constraintTop_toBottomOf="@+id/EditText8" />
+
+    <!--    기타-->
+    <TextView
+        android:id="@+id/etcText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/기타"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repairText" />
+
+    <EditText
+        android:id="@+id/EditText10"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="@string/비용입력"
+        android:inputType="textPersonName"
+        android:minHeight="50dp"
+        app:layout_constraintStart_toEndOf="@+id/etcText"
+        app:layout_constraintTop_toBottomOf="@+id/EditText9" />
 
     <!--    버튼-->
     <Button
         android:id="@+id/saveMonthBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="@string/저장"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EditText2" />
+        app:layout_constraintStart_toEndOf="@+id/EditText10"
+        app:layout_constraintTop_toBottomOf="@+id/EditText10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
