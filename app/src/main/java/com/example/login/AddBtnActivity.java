@@ -4,16 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class AddBtnActivity extends AppCompatActivity {
 
@@ -39,6 +42,7 @@ public class AddBtnActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.title);
         Intent getIntent = getIntent();
         textView.setText(getIntent.getStringExtra("month"));
+        Button addMonthBtn = findViewById(R.id.saveMonthBtn);
 
         addMonthBtn.setOnClickListener(v -> {
             Toast.makeText(AddBtnActivity.this, "저장 중", Toast.LENGTH_LONG).show();
@@ -53,7 +57,7 @@ public class AddBtnActivity extends AppCompatActivity {
             vinylFee = Integer.parseInt(vinylTextbox.getText().toString());
             repairFee = Integer.parseInt(refairTextbox.getText().toString());
             etcFee = Integer.parseInt(etcTextbox.getText().toString());
-            month = 5;
+            month =  getIntent.getIntExtra("month", -1);
 
             Map<String, Object> values = new HashMap<>();
             values.put("월", month);
@@ -70,7 +74,7 @@ public class AddBtnActivity extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("지출");
 
-            String key = String.valueOf(month);
+            String key = String.valueOf(month) + "00";
             myRef.child(key).updateChildren(values);
 
             Intent intent = new Intent(AddBtnActivity.this, CalendarActivity.class);

@@ -111,13 +111,21 @@
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="0dp"
-        android:text="@string/지출추가"
+        android:layout_marginTop="25dp"
+        android:text="지출 입력"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/showProfit"
         app:layout_constraintTop_toTopOf="@+id/goBackBtn" />
 
-
+    <Button
+        android:id="@+id/dailyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="0dp"
+        android:text="매출 입력"
+        app:layout_constraintBottom_toTopOf="@+id/addBtn"
+        app:layout_constraintEnd_toEndOf="@+id/addBtn"
+        app:layout_constraintStart_toStartOf="@+id/addBtn" />
 
     <Button
         android:id="@+id/goBackBtn"

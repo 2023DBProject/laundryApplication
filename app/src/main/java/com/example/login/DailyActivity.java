@@ -45,8 +45,9 @@ public class DailyActivity extends AppCompatActivity {
             Eshoe = Integer.parseInt(editShoe.getText().toString());
             Ethings = Integer.parseInt(editThings.getText().toString());
             Eetc = Integer.parseInt(editEtc.getText().toString());
-            day = 30;
-            month = 5;
+            day = getIntent.getIntExtra("day", -1);
+            month =  getIntent.getIntExtra("month", -1);
+            boolean isWeekend = getIntent.getBooleanExtra("isWeekend", false);
 
             Map<String, Object> values = new HashMap<>();
             values.put("일", day);
@@ -55,7 +56,7 @@ public class DailyActivity extends AppCompatActivity {
             values.put("세탁용품", Ethings);
             values.put("운동화", Eshoe);
             values.put("기타", Eetc);
-            values.put("주말여부", "x");
+            values.put("주말여부", isWeekend);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("매출");
