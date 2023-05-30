@@ -43,7 +43,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="@string/매출입력"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:minHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/clothText"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -71,7 +71,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="@string/매출입력"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:minHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/shoeText"
         app:layout_constraintTop_toBottomOf="@+id/editCloth" />
@@ -99,7 +99,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="@string/매출입력"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:minHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/thingsText"
         app:layout_constraintTop_toBottomOf="@+id/editShoe" />
@@ -127,7 +127,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="@string/매출입력"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:minHeight="50dp"
         app:layout_constraintStart_toEndOf="@+id/etcText"
         app:layout_constraintTop_toBottomOf="@+id/editThings" />
