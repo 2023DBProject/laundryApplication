@@ -10,13 +10,17 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 
@@ -52,15 +56,29 @@ public class ChartActivity_4 extends AppCompatActivity {
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
                 xAxis.setLabelCount(2); // x축 라벨 수
                 xAxis.setValueFormatter(new IndexAxisValueFormatter(new String[] {"평일 평균", "주말 평균" }));
+                xAxis.setTextSize(12f); // 라벨의 글자 크기 설정(12f라는 숫자는 변경 가능)
 
-                barDataSet.setColor(Color.BLUE); // 해당 BarDataSet 색 설정 :: 각 막대 과 관련된 세팅은 여기서 설정한다.
+                barDataSet.setColor(Color.rgb(135, 206, 235)); // 해당 BarDataSet 색 설정 :: 각 막대 과 관련된 세팅은 여기서 설정한다.
+                barData.setValueTextSize(10f);
 
+                barChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+                    @Override
+                    public void onValueSelected(Entry e, Highlight h) {
+                        String selectedValue = String.valueOf((int) e.getY()); // 선택된 바의 값을 정수로 변환한 후 문자열로 변환합니다.
+                        Toast.makeText(getApplicationContext(), selectedValue, Toast.LENGTH_SHORT).show(); // 선택된 값 출력
+                        barData.setValueTextSize(15f);
+                    }
+
+                    @Override
+                    public void onNothingSelected() {
+                        barData.setValueTextSize(10f);
+                    }
+                });
                 barData.addDataSet(barDataSet); // 해당 BarDataSet 을 적용될 차트에 들어갈 DataSet 에 넣는다.
 
                 barChart.setData(barData); // 차트에 위의 DataSet 을 넣는다.
 
                 barChart.invalidate(); // 차트 업데이트
-                barChart.setTouchEnabled(false); // 차트 터치 불가능하게
 
             }
         });

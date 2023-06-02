@@ -21,10 +21,10 @@
             android:name=".ChartActivity_4"
             android:exported="false" />
         <activity
-            android:name=".ChartActivity_2"
+            android:name=".ChartActivity_3"
             android:exported="false" />
         <activity
-            android:name=".ChartActivity_3"
+            android:name=".ChartActivity_2"
             android:exported="false" />
         <activity
             android:name=".ChartActivity_1"

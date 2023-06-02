@@ -84,7 +84,7 @@ public class ChartActivity extends AppCompatActivity {
         btn2 = findViewById(R.id.button2);
         btn2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChartActivity_3.class);
+                Intent intent = new Intent(getApplicationContext(), ChartActivity_2.class);
                 startActivity(intent);
             }
         });
@@ -92,7 +92,7 @@ public class ChartActivity extends AppCompatActivity {
         btn_cp = findViewById(R.id.button3);
         btn_cp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChartActivity_2.class);
+                Intent intent = new Intent(getApplicationContext(), ChartActivity_3.class);
                 startActivity(intent);
             }
         });
