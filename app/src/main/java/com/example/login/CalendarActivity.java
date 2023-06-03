@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.text.NumberFormat;
 
 public class CalendarActivity extends AppCompatActivity {
 
@@ -157,24 +158,29 @@ public class CalendarActivity extends AppCompatActivity {
             return;
         }
 
+        NumberFormat nf = NumberFormat.getNumberInstance();
+
         for (ArrayList<String> row : revenueData) {
             if (row.get(0).equals(String.valueOf(themonth)) && row.get(1).equals(String.valueOf(theDay))) {
                 TextView showEarn = findViewById(R.id.showEarn);
-                showEarn.setText("매출금액: " + row.get(2));
+                int revenue = Integer.parseInt(row.get(2));
+                showEarn.setText("매출금액: " + nf.format(revenue));
                 break;
             }
         }
         for (ArrayList<String> row : profitData) {
             if (row.get(0).equals(String.valueOf(themonth))) {
                 TextView showExpense = findViewById(R.id.showPaid);
-                showExpense.setText("지출금액: " + row.get(1));
+                int expense = Integer.parseInt(row.get(1));
+                showExpense.setText("지출금액: " + nf.format(expense));
                 break;
             }
         }
         for (ArrayList<String> row : profitData) {
             if (row.get(0).equals(String.valueOf(themonth))) {
                 TextView showProfit = findViewById(R.id.showProfit);
-                showProfit.setText("순수익금액: " + row.get(2));
+                int profit = Integer.parseInt(row.get(2));
+                showProfit.setText("순수익금액: " + nf.format(profit));
                 break;
             }
         }
