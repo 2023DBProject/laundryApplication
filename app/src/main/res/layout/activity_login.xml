@@ -10,6 +10,7 @@
     android:padding="15dp"
     tools:context=".Login">
 
+
     <TextView
         android:text="@string/login"
         android:textSize="25sp"
@@ -49,6 +50,7 @@
     <Button
         android:id="@+id/btn_login"
         android:text="@string/login"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </LinearLayout>

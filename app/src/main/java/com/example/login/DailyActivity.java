@@ -35,6 +35,7 @@ public class DailyActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         Intent getIntent = getIntent();
         textView.setText(getIntent.getStringExtra("date"));
+
         Button saveBtn = findViewById(R.id.saveBtn);
 
         saveBtn.setOnClickListener(v -> {

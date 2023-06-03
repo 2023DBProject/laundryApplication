@@ -76,7 +76,8 @@ public class CalendarActivity extends AppCompatActivity {
                                 if (strMonth.equals(String.valueOf(month + 1)) && strDay.equals(String.valueOf(dayOfMonth))) {
                                     // Get data from snapshot
                                     Long laundry = snapshot.child("세탁/건조").getValue(Long.class);
-                                    Long shoes = snapshot.child("운동화").getValue(Long.class);
+                                    Long shoes = snapshot.child(
+                                            "운동화").getValue(Long.class);
                                     Long detergent = snapshot.child("세탁용품").getValue(Long.class);
 
                                     // TODO: Update your UI using the data
