@@ -16,27 +16,89 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 
 public class CalendarActivity extends AppCompatActivity {
 
+    // Declare variables at the class level
+    private ArrayList<ArrayList<String>> revenueData = new ArrayList<>();
+    private ArrayList<ArrayList<String>> profitData = new ArrayList<>();
     private String theDate = "";
     private String theMonth = "";
-    private String selectedDay;
-    private DatabaseReference mDatabase;
-    Button addBtn;
-    Button dailyBtn;
-    Button goBackBtn;
     private int theDay;
     private int themonth;
     boolean isWeekend;
-
+    private int dataReadyCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        // Initialize database reference
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference revenueRef = database.getReference("매출");
+        DatabaseReference profitRef = database.getReference("수익결산");
+
+        // Read data from "매출" table
+        revenueRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get data for all days of the month
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HashMap<String, Object> data = (HashMap<String, Object>) snapshot.getValue();
+                    String month = data.get("월") != null ? data.get("월").toString() : "0";
+                    String day = data.get("일") != null ? data.get("일").toString() : "0";
+                    String revenue = data.get("일 매출") != null ? data.get("일 매출").toString() : "0";
+                    ArrayList<String> rowData = new ArrayList<>();
+                    rowData.add(month);
+                    rowData.add(day);
+                    rowData.add(revenue);
+                    revenueData.add(rowData);
+                }
+                Log.d("Firebase", "Data: " + revenueData);
+                dataReadyCounter++;
+                tryUpdateData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("Firebase", "Failed to read value.", error.toException());
+                Toast.makeText(CalendarActivity.this, "error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Read data from "수익결산" table
+        profitRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get data for all days of the month
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HashMap<String, Object> data = (HashMap<String, Object>) snapshot.getValue();
+                    String month = data.get("월") != null ? data.get("월").toString() : "0";
+                    String expense = data.get("지출") != null ? data.get("지출").toString() : "0";
+                    String profit = data.get("순수익") != null ? data.get("순수익").toString() : "0";
+                    ArrayList<String> rowData = new ArrayList<>();
+                    rowData.add(month);
+                    rowData.add(expense);
+                    rowData.add(profit);
+                    profitData.add(rowData);
+                }
+                ArrayList<String> data = (ArrayList<String>) dataSnapshot.getValue();
+                Log.d("Firebase", "Data: " + data);
+                dataReadyCounter++;
+                tryUpdateData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("Firebase", "Failed to read value.", error.toException());
+                Toast.makeText(CalendarActivity.this, "error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         Calendar today = new GregorianCalendar();
         CalendarView calendarView;
@@ -44,13 +106,10 @@ public class CalendarActivity extends AppCompatActivity {
         int month = today.get(Calendar.MONTH);
         int day = today.get(Calendar.DATE);
 
-
         calendarView = findViewById(R.id.calendarView);
-
-
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                theDate = (month + 1) + "월 " + dayOfMonth + "일 매출 입력";
+                theDate = (month + 1) + "월 " + dayOfMonth + "일 매출";
                 theMonth = (month + 1) + "월 지출 입력";
                 themonth = (month + 1);
                 theDay = dayOfMonth;
@@ -60,68 +119,64 @@ public class CalendarActivity extends AppCompatActivity {
                 int dayOfWeek = selectedDate.get(Calendar.DAY_OF_WEEK);
                 isWeekend = (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY);
 
-                selectedDay = theDate;
+                TextView textView = findViewById(R.id.dailyText);
+                textView.setText(theDate);
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("매출").child(theDate);
-
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // 데이터가 있는 경우
-                        if (dataSnapshot.exists()) {
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                String strMonth = snapshot.child("월").getValue().toString();
-                                String strDay = snapshot.child("일").getValue().toString();
-                                if (strMonth.equals(String.valueOf(month + 1)) && strDay.equals(String.valueOf(dayOfMonth))) {
-                                    // Get data from snapshot
-                                    Long laundry = snapshot.child("세탁/건조").getValue(Long.class);
-                                    Long shoes = snapshot.child(
-                                            "운동화").getValue(Long.class);
-                                    Long detergent = snapshot.child("세탁용품").getValue(Long.class);
-
-                                    // TODO: Update your UI using the data
-                                    TextView showEarn = findViewById(R.id.showEarn);
-                                    showEarn.setText("세탁/건조: " + laundry + ", 운동화: " + shoes + ", 세탁용품: " + detergent);
-                                }
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        Log.w("Firebase", "Failed to read value.", error.toException());
-                        Toast.makeText(CalendarActivity.this, "error", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                tryUpdateData();
             }
         });
 
-        dailyBtn = findViewById(R.id.dailyBtn);
+        Button dailyBtn = findViewById(R.id.dailyBtn);
         dailyBtn.setOnClickListener(v -> {
             Intent intent = new Intent(CalendarActivity.this, DailyActivity.class);
-            intent.putExtra("date", theDate);
+            intent.putExtra("date", theDate + "입력");
             intent.putExtra("day", theDay);
             intent.putExtra("month", themonth);
             intent.putExtra("isWeekend", isWeekend);
             startActivity(intent);
         });
 
-        addBtn = findViewById(R.id.addBtn);
-            addBtn.setOnClickListener(v -> {
+        Button addBtn = findViewById(R.id.addBtn);
+        addBtn.setOnClickListener(v -> {
             Toast.makeText(CalendarActivity.this, "내역 추가", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(CalendarActivity.this, AddBtnActivity.class);
-            intent.putExtra("month", theMonth);
+            intent.putExtra("month_string", theMonth);
             intent.putExtra("month", themonth);
             startActivity(intent);
         });
 
-        goBackBtn = findViewById(R.id.goBackBtn);
-            goBackBtn.setOnClickListener(v -> {
-            //Toast.makeText(CalendarActivity.this, "메인화면으로...", Toast.LENGTH_SHORT).show();
+        Button goBackBtn = findViewById(R.id.goBackBtn);
+        goBackBtn.setOnClickListener(v -> {
             Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
             startActivity(intent);
         });
+    }
+
+    private void tryUpdateData() {
+        if (dataReadyCounter < 2) {
+            return;
+        }
+
+        for (ArrayList<String> row : revenueData) {
+            if (row.get(0).equals(String.valueOf(themonth)) && row.get(1).equals(String.valueOf(theDay))) {
+                TextView showEarn = findViewById(R.id.showEarn);
+                showEarn.setText("매출금액: " + row.get(2));
+                break;
+            }
+        }
+        for (ArrayList<String> row : profitData) {
+            if (row.get(0).equals(String.valueOf(themonth))) {
+                TextView showExpense = findViewById(R.id.showPaid);
+                showExpense.setText("지출금액: " + row.get(1));
+                break;
+            }
+        }
+        for (ArrayList<String> row : profitData) {
+            if (row.get(0).equals(String.valueOf(themonth))) {
+                TextView showProfit = findViewById(R.id.showProfit);
+                showProfit.setText("순수익금액: " + row.get(2));
+                break;
+            }
+        }
     }
 }

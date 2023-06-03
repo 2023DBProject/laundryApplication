@@ -41,13 +41,14 @@ public class AddBtnActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.title);
         Intent getIntent = getIntent();
-        textView.setText(getIntent.getStringExtra("month"));
+        textView.setText(getIntent.getStringExtra("month_string"));
         Button addMonthBtn = findViewById(R.id.saveMonthBtn);
 
         addMonthBtn.setOnClickListener(v -> {
             Toast.makeText(AddBtnActivity.this, "저장 중", Toast.LENGTH_LONG).show();
 
-            int waterTax, electricityFee, adFee, detergentFee, fabricSoftenerFee, bounceFee, vinylFee, repairFee, etcFee, month;
+            int waterTax, electricityFee, adFee, detergentFee, fabricSoftenerFee, bounceFee, vinylFee, repairFee, etcFee, month, FixedFee;
+            FixedFee = 1428667;
             waterTax = Integer.parseInt(watertaxTextbox.getText().toString());
             electricityFee = Integer.parseInt(electricityfeeTextbox.getText().toString());
             adFee = Integer.parseInt(adTextbox.getText().toString());
@@ -61,21 +62,38 @@ public class AddBtnActivity extends AppCompatActivity {
 
             Map<String, Object> values = new HashMap<>();
             values.put("월", month);
-            values.put("수도비", waterTax);
+            values.put("고정비용", FixedFee);
+            values.put("수도세", waterTax);
             values.put("전기세", electricityFee);
             values.put("광고비", adFee);
-            values.put("세제", detergentFee);
-            values.put("섬유유연제", fabricSoftenerFee);
-            values.put("바운스", bounceFee);
-            values.put("비닐", vinylFee);
-            values.put("수리비", repairFee);
-            values.put("기타", etcFee);
+            values.put("비품총액", detergentFee + fabricSoftenerFee + bounceFee + vinylFee);
+            values.put("지출총액", detergentFee + fabricSoftenerFee + bounceFee + vinylFee + adFee + electricityFee + waterTax);
+
+            Map<String, Object> values_fixtures = new HashMap<>();
+            values_fixtures.put("월", month);
+            values_fixtures.put("비품총액", detergentFee + fabricSoftenerFee + bounceFee + vinylFee);
+            values_fixtures.put("세제", detergentFee);
+            values_fixtures.put("섬유유연제", fabricSoftenerFee);
+            values_fixtures.put("바운스", bounceFee);
+            values_fixtures.put("세탁비닐", vinylFee);
+            values_fixtures.put("수리비", repairFee);
+            values_fixtures.put("기타", etcFee);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("지출");
+            DatabaseReference myRef_fixtures = database.getReference("비품");
 
-            String key = String.valueOf(month) + "00";
-            myRef.child(key).updateChildren(values);
+            if (month >= 6) {
+                String key = String.valueOf(month - 6) + "00" ;
+                myRef.child(key).updateChildren(values);
+                myRef_fixtures.child(key).updateChildren(values_fixtures);
+            } else {
+                String key = String.valueOf(month + 6) + "00" ;
+                myRef.child(key).updateChildren(values);
+                myRef_fixtures.child(key).updateChildren(values_fixtures);
+
+            }
+
 
             Intent intent = new Intent(AddBtnActivity.this, CalendarActivity.class);
             startActivity(intent);

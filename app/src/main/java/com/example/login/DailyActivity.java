@@ -56,8 +56,9 @@ public class DailyActivity extends AppCompatActivity {
             values.put("세탁건조", Ecloth);
             values.put("세탁용품", Ethings);
             values.put("운동화", Eshoe);
-            values.put("기타", Eetc);
-            values.put("주말여부", isWeekend);
+            values.put("음료수커피안마의자", Eetc);
+            values.put("주말 및 공휴일", isWeekend);
+            values.put("일 매출", Ecloth + Eshoe + Ethings + Eetc);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("매출");
