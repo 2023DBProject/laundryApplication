@@ -32,89 +32,71 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/dailyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="월간매출관리"
+        android:text="6월2일 매출"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        tools:layout_editor_absoluteX="16dp" />
-
-    <TextView
-        android:id="@+id/earn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginStart="30dp"
-        android:text="@string/매출"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
     <TextView
         android:id="@+id/showEarn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginStart="15dp"
-        android:text="매출을 보여주세요"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/earn"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        android:layout_marginTop="20dp"
+        android:text="매출금액"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailyText" />
 
     <TextView
-        android:id="@+id/paid"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="30dp"
-        android:text="@string/지출"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/earn" />
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="월간매출관리"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/showEarn"
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:id="@+id/showPaid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:text="지출을 보여주세요"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/paid"
-        app:layout_constraintTop_toBottomOf="@+id/showEarn" />
-    <TextView
-        android:id="@+id/profit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_marginStart="30dp"
-        android:text="@string/순이익"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:text="지출금액"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paid" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/showProfit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:text="순이익을 보여주세요"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
+        android:text="순이익금액"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/profit"
-        app:layout_constraintTop_toBottomOf="@+id/showPaid" />
+        android:background="@drawable/border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/showPaid" />
 
     <Button
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:layout_marginRight="10dp"
         android:text="지출 입력"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/showProfit"
         app:layout_constraintTop_toTopOf="@+id/goBackBtn" />
 
     <Button
@@ -132,6 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="50dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/goBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
