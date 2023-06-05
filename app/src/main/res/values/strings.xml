@@ -51,5 +51,15 @@
     <string name="수리비용">수리비 : </string>
     <string name="SolutionTitle">Your Solution Title</string>
     <string name="first_fragment_label">Your First Fragment Label</string>
-    <string name="second_fragment_label">Your Second Fragment Label</string>/>
+    <string name="second_fragment_label">Your Second Fragment Label</string>
+    <string name="강수량">강수량 : </string>
+    <string name="강수량솔루션">해당사항 없음</string>
+    <string name="일평균온도">일평균 온도 :</string>
+    <string name="일평균온도솔루션">해당사항 없음</string>
+    <string name="연휴">연휴 :</string>
+    <string name="연휴솔루션">해당사항 없음</string>
+    <string name="광고">광고 :</string>
+    <string name="광고솔루션">해당사항 없음</string>
+    <string name="미세먼지">미세먼지 :</string>
+    <string name="미세먼지솔루션">해당사항 없음</string>/>
 </resources>

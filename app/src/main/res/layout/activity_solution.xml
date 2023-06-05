@@ -20,4 +20,103 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/rain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/강수량"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rainSolution"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/강수량솔루션"
+        app:layout_constraintStart_toEndOf="@+id/rain"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/temper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/일평균온도"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rain" />
+
+    <TextView
+        android:id="@+id/temperSolution"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/일평균온도솔루션"
+        app:layout_constraintStart_toEndOf="@+id/temper"
+        app:layout_constraintTop_toBottomOf="@+id/rainSolution" />
+
+    <TextView
+        android:id="@+id/holidays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/연휴"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temper" />
+
+    <TextView
+        android:id="@+id/holidaysSolution"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/연휴솔루션"
+        app:layout_constraintStart_toEndOf="@+id/holidays"
+        app:layout_constraintTop_toBottomOf="@+id/temperSolution" />
+
+    <TextView
+        android:id="@+id/dust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/미세먼지"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/holidays" />
+
+    <TextView
+        android:id="@+id/dustSolution"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/미세먼지솔루션"
+        app:layout_constraintStart_toEndOf="@+id/dust"
+        app:layout_constraintTop_toBottomOf="@+id/holidaysSolution" />
+
+    <TextView
+        android:id="@+id/ads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/광고"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dust" />
+
+    <TextView
+        android:id="@+id/adsSolution"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/광고솔루션"
+        app:layout_constraintStart_toEndOf="@+id/ads"
+        app:layout_constraintTop_toBottomOf="@+id/dustSolution" />
 </androidx.constraintlayout.widget.ConstraintLayout>

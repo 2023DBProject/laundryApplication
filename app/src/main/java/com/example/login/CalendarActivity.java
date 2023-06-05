@@ -164,7 +164,7 @@ public class CalendarActivity extends AppCompatActivity {
             if (row.get(0).equals(String.valueOf(themonth)) && row.get(1).equals(String.valueOf(theDay))) {
                 TextView showEarn = findViewById(R.id.showEarn);
                 int revenue = Integer.parseInt(row.get(2));
-                showEarn.setText("매출금액: " + nf.format(revenue));
+                showEarn.setText("매출: " + nf.format(revenue));
                 break;
             }
         }
