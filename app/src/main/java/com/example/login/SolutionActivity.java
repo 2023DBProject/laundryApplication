@@ -3,7 +3,12 @@ package com.example.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -62,82 +67,94 @@ public class SolutionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solution);
 
-        int month = LocalDate.now().getMonthValue();
-        String solutionString = month + "월 매장 관리 솔루션";
+//        int month = LocalDate.now().getMonthValue();
+//        String solutionString = month + "월 매장 관리 솔루션";
 
         titleView = findViewById(R.id.solutionTitle);
-        titleView.setText(solutionString);
+        titleView.setText("매장 관리 솔루션");
 
-        switch (month) {
-            case 6:
+        Spinner spinner = (Spinner) findViewById(R.id.month_spinner);
+
+        String[] months = new String[]{"22년 6월", "22년 7월", "22년 8월", "22년 9월", "22년 10월", "22년 11월", "22년 12월","23년 1월", "23년 2월", "23년 3월", "23년 4월", "23년 5월"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, months);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // position을 사용해 선택한 월을 가져옵니다.
+                String selectedMonth = months[position];
                 rainSolView = findViewById(R.id.rainSolution);
-                rainSolView.setText(rain100);
                 temperSolView = findViewById(R.id.temperSolution);
-                temperSolView.setText(aveTemp20);
                 holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(holiday3);
-                break;
-            case 7:
-                rainSolView = findViewById(R.id.rainSolution);
-                rainSolView.setText(rain100);
-                temperSolView = findViewById(R.id.temperSolution);
-                temperSolView.setText(aveTemp20);
-                break;
-            case 8:
-                rainSolView = findViewById(R.id.rainSolution);
-                rainSolView.setText(rain100);
-                temperSolView = findViewById(R.id.temperSolution);
-                temperSolView.setText(aveTemp20);
-                holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(holiday3);
-                break;
-            case 9:
-                holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(holiday3);
-                break;
-            case 10:
-                holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(holiday3);
+                dustSolView = findViewById(R.id.dustSolution);
                 adsSolView = findViewById(R.id.adsSolution);
-                adsSolView.setText(adsO);
-                break;
-            case 11:
-                temperSolView = findViewById(R.id.temperSolution);
-                temperSolView.setText(aveTemp10);
-                holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(holiday3);
-                break;
-            case 12:
-                temperSolView = findViewById(R.id.temperSolution);
-                temperSolView.setText(aveTemp10);
-                dustSolView = findViewById(R.id.dustSolution);
-                dustSolView.setText(finedust100);
-                break;
-            case 1:
-                holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(holiday3);
-                dustSolView = findViewById(R.id.dustSolution);
-                dustSolView.setText(finedust100);
-                break;
-            case 2:
-                holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(noHoliday);
-                break;
-            case 3:
-                dustSolView = findViewById(R.id.dustSolution);
-                dustSolView.setText(finedust100);
-                holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(noHoliday);
-                break;
-            case 4:
-                temperSolView = findViewById(R.id.temperSolution);
-                temperSolView.setText(aveTemp15);
-                break;
-            case 5:
-                holidaySolView = findViewById(R.id.holidaysSolution);
-                holidaySolView.setText(holiday3);
-                break;
-        }
+
+                rainSolView.setText("해당사항 없음"); // 초기값으로 설정
+                temperSolView.setText("해당사항 없음"); // 초기값으로 설정
+                holidaySolView.setText("해당사항 없음"); // 초기값으로 설정
+                dustSolView.setText("해당사항 없음"); // 초기값으로 설정
+                adsSolView.setText("해당사항 없음"); // 초기값으로 설정
+                switch (selectedMonth) {
+                    case "22년 6월":
+                        rainSolView.setText(rain100);
+                        temperSolView.setText(aveTemp20);
+                        holidaySolView.setText(holiday3);
+                        break;
+                    case "22년 7월":
+                        rainSolView.setText(rain100);
+                        temperSolView.setText(aveTemp20);
+                        break;
+                    case "22년 8월":
+                        rainSolView.setText(rain100);
+                        temperSolView.setText(aveTemp20);
+                        holidaySolView.setText(holiday3);
+                        break;
+                    case "22년 9월":
+                        holidaySolView.setText(holiday3);
+                        break;
+                    case "22년 10월":
+                        holidaySolView.setText(holiday3);
+                        adsSolView.setText(adsO);
+                        break;
+                    case "22년 11월":
+                        temperSolView.setText(aveTemp10);
+                        holidaySolView.setText(holiday3);
+                        break;
+                    case "22년 12월":
+                        temperSolView.setText(aveTemp10);
+                        dustSolView.setText(finedust100);
+                        break;
+                    case "23년 1월":
+                        holidaySolView.setText(holiday3);
+                        dustSolView.setText(finedust100);
+                        break;
+                    case "23년 2월":
+                        holidaySolView.setText(noHoliday);
+                        break;
+                    case "23년 3월":
+                        dustSolView.setText(finedust100);
+                        holidaySolView.setText(noHoliday);
+                        break;
+                    case "23년 4월":
+                        temperSolView.setText(aveTemp15);
+                        break;
+                    case "23년 5월":
+                        holidaySolView.setText(holiday3);
+                        break;
+                }
+                // Toast 메시지로 선택한 월을 표시합니다.
+                Toast.makeText(getApplicationContext(), "Selected: " + selectedMonth, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                
+                
+            }
+        });
+        
 
 
 

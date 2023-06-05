@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,10 +37,19 @@ public class ChartActivity extends AppCompatActivity {
     Button btn_week;
     Button btn_ad;
 
+    FirebaseUser user;
+    FirebaseAuth auth;
+    TextView userText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
+
+        auth = FirebaseAuth.getInstance();
+        userText = findViewById(R.id.user_details);
+        user = auth.getCurrentUser();   // 현재 user 정보를 user에 넣음
+        userText.setText(user.getEmail());
+
 
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
         int n = 0;

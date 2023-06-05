@@ -61,7 +61,7 @@ public class ChartActivity_3 extends AppCompatActivity {
                     @Override
                     public void onValueSelected(Entry e, Highlight h) {
                         String selectedValue = String.valueOf(e.getY()); // 선택된 포인트의 y값을 문자열로 변환
-                        Toast.makeText(getApplicationContext(), selectedValue, Toast.LENGTH_SHORT).show(); // 선택된 값 출력
+                        //Toast.makeText(getApplicationContext(), selectedValue, Toast.LENGTH_SHORT).show(); // 선택된 값 출력
                         dataset.setValueTextSize(14f);
                     }
 

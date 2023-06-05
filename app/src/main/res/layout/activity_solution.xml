@@ -20,6 +20,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Spinner
+        android:id="@+id/month_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solutionTitle" />
+
     <TextView
         android:textStyle="bold"
 
@@ -37,12 +46,20 @@
         android:id="@+id/rainSolution"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="120dp"
         android:layout_marginRight="20dp"
         android:text="@string/강수량솔루션"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/umbrella"
+        app:layout_constraintStart_toStartOf="@+id/rain"
+        app:layout_constraintTop_toBottomOf="@+id/rain" />
 
     <TextView
         android:textStyle="bold"
@@ -68,6 +85,14 @@
 
         app:layout_constraintTop_toBottomOf="@+id/rainSolution" />
 
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/thermometer"
+        app:layout_constraintStart_toStartOf="@+id/temper"
+        app:layout_constraintTop_toBottomOf="@+id/temper" />
+
     <TextView
         android:textStyle="bold"
 
@@ -90,6 +115,14 @@
         android:text="@string/연휴솔루션"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/temperSolution" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/holiday"
+        app:layout_constraintStart_toStartOf="@+id/holidays"
+        app:layout_constraintTop_toBottomOf="@+id/holidays" />
 
     <TextView
         android:textStyle="bold"
@@ -114,6 +147,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/holidaysSolution" />
 
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/dust"
+        app:layout_constraintStart_toStartOf="@+id/dust"
+        app:layout_constraintTop_toBottomOf="@+id/dust" />ㄴ
+
     <TextView
         android:textStyle="bold"
 
@@ -136,4 +177,13 @@
         android:text="@string/광고솔루션"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dustSolution" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/advertise"
+        app:layout_constraintStart_toStartOf="@+id/ads"
+        app:layout_constraintTop_toBottomOf="@+id/ads" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
